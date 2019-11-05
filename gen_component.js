@@ -1,6 +1,7 @@
 const fs = require("fs");
 var rimraf = require("rimraf");
 const readlineSync = require('readline-sync');
+var changeCase = require('change-case')
 const componentsRootDir = "components_work_dir";
 const templatesRootDir = "templates";
 const templatePaths = {
@@ -21,7 +22,9 @@ componentName = componentName || defaultComponentName;
 
 const componentDir = `${componentsRootDir}/${componentName}`;
 fs.mkdir(componentDir, () => {
-    fs.readFile(templatePaths.component, "utf8", (err, data) => {        
+    fs.readFile(templatePaths.component, "utf8", (err, data) => {
+        data = data.replace(new RegExp("{{componentName}}", 'g'), componentName);
+        data = data.replace(new RegExp("{{classNamePrefix}}", 'g'), changeCase.paramCase(componentName));
         fs.writeFile(`${componentsRootDir}/${componentName}/${componentName}.tsx`, data, (err) => {
             if (err) throw err;
         });
@@ -31,6 +34,4 @@ fs.mkdir(componentDir, () => {
             if (err) throw err;
         });
     });
-})
-
-//Enter a name for the new component and hit Enter (default MyComponent):
+});

@@ -1,18 +1,18 @@
 import React from "react";
-import "./PdfHistoryList.scss";
+import "./{{componentName}}.scss";
 import { observer } from "mobx-react-lite";
 
-interface IPdfHistoryListProps {
-    fileList: any[];
+interface I{{componentName}}Props {
+    someProp: any[];
 }
 
-function PdfHistoryList(props: IPdfHistoryListProps) {
+function {{componentName}}(props: I{{componentName}}Props) {
     console.log(props);
     return(
-        <div className="pdf-history-list-container">
-            (TODO history of previously generated PDF files)
+        <div className="{{classNamePrefix}}-container">
+            
         </div>
     );
 }
 
-export default observer(PdfHistoryList);
+export default observer({{componentName}});
