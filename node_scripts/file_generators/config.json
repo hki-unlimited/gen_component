@@ -1,0 +1,11 @@
+{
+    "componentsRootDir":  "../../src/components",
+    "templatesRootDir": "templates/component",
+    "templateNames": {
+        "component": {
+            "componentTmpl": "component.tsx.mst",
+            "componentWithoutPropsTmpl": "componentWithoutProps.tsx.mst",
+            "sassTmpl": "componentStyle.scss.mst"
+        }
+    }
+}
